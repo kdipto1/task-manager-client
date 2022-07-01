@@ -60,7 +60,7 @@ const Home = () => {
         </button>
       </form>
       {/* Todo list component */}
-      <Todo tasks={tasks} isLoading={isLoading} refetch={refetch} />
+      <Todo refetch={refetch} />
     </section>
   );
 };

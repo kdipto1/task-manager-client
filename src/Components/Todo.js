@@ -2,11 +2,10 @@ import React from "react";
 import { useQuery } from "react-query";
 import { toast } from "react-toastify";
 
-const Todo = () => {
+const Todo = ({refetch}) => {
   const {
     data: tasks,
-    isLoading,
-    refetch,
+    isLoading
   } = useQuery("homeTasks", () =>
     fetch("https://radiant-shelf-35399.herokuapp.com/allTasks").then((res) =>
       res.json()
