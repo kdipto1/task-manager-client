@@ -15,6 +15,9 @@ const Header = () => {
             <Nav.Link as={Link} to="/completed">
               Completed
             </Nav.Link>
+            <Nav.Link as={Link} to="/todo">
+              To-Do
+            </Nav.Link>
             <Nav.Link as={Link} to="/calendar">
               Calendar
             </Nav.Link>

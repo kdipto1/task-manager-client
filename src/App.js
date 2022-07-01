@@ -5,6 +5,7 @@ import Header from "./Components/Header";
 import Home from "./Components/Home";
 import Dates from "./Components/Dates";
 import CompletedTasks from "./Components/CompletedTasks";
+import Footer from "./Components/Footer";
 import Todo from "./Components/Todo";
 
 function App() {
@@ -15,7 +16,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/calendar" element={<Dates />} />
         <Route path="/completed" element={<CompletedTasks />} />
+        <Route path="/todo" element={<Todo />} />
       </Routes>
+      <Footer />
       <ToastContainer />
     </>
   );

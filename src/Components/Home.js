@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Todo from "./Todo";
 import { useQuery } from "react-query";
 import { toast } from "react-toastify";
@@ -13,6 +13,18 @@ const Home = () => {
       res.json()
     )
   );
+
+  if (isLoading) {
+    return (
+      <div
+        className="spinner-grow"
+        style={{ width: "3rem", height: "3rem" }}
+        role="status"
+      >
+        <span className="visually-hidden">Loading...</span>
+      </div>
+    );
+  }
   const addTask = (event) => {
     event.preventDefault();
     const task = event.target.task.value;
@@ -35,7 +47,7 @@ const Home = () => {
       });
   };
   return (
-    <section className="container mt-5">
+    <section className="container mt-5 min-vh-100">
       <form onSubmit={addTask} className="input-group mb-3 w-50 mx-auto">
         <input
           type="text"
@@ -48,7 +60,7 @@ const Home = () => {
         </button>
       </form>
       {/* Todo list component */}
-      <Todo tasks={tasks} refetch={refetch} />
+      <Todo tasks={tasks} isLoading={isLoading} refetch={refetch} />
     </section>
   );
 };

@@ -1,8 +1,28 @@
 import React from "react";
+import { useQuery } from "react-query";
 import { toast } from "react-toastify";
 
-const Todo = ({ tasks, refetch }) => {
-  //
+const Todo = () => {
+  const {
+    data: tasks,
+    isLoading,
+    refetch,
+  } = useQuery("homeTasks", () =>
+    fetch("https://radiant-shelf-35399.herokuapp.com/allTasks").then((res) =>
+      res.json()
+    )
+  );
+  if (isLoading) {
+    return (
+      <div
+        className="spinner-grow"
+        style={{ width: "3rem", height: "3rem" }}
+        role="status"
+      >
+        <span className="visually-hidden">Loading...</span>
+      </div>
+    );
+  }
   const handleTask = async (event, id) => {
     event.preventDefault();
     const task = event?.target.task.value;
@@ -52,9 +72,9 @@ const Todo = ({ tasks, refetch }) => {
       });
   };
   return (
-    <section>
-      <h1 className="text-center">Tasks:</h1>
-      {tasks?.reverse().map((task) => {
+    <section className="container min-vh-100 ">
+      <h2 className="text-center">To-Do:</h2>
+      {tasks?.map((task) => {
         return (
           <form
             key={task._id}

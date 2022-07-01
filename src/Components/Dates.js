@@ -5,7 +5,7 @@ import "react-calendar/dist/Calendar.css";
 const Dates = () => {
   const [value, onChange] = useState(new Date());
   return (
-    <section className="container">
+    <section className="container min-vh-100">
       <h2 className="text-center mt-2">Calendar</h2>
       <Calendar className="mx-auto mt-5" onChange={onChange} value={value} />
     </section>
